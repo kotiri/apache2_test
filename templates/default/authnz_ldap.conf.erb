@@ -1,3 +1,4 @@
+<IfModule mod_authnz_ldap.c>
 <Location /secure>
   AuthType basic
   AuthBasicProvider "ldap"
@@ -5,3 +6,4 @@
   AuthName "private area"
   Require valid-user
 </Location>
+</IfModule>
