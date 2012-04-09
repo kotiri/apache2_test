@@ -67,10 +67,6 @@ def https_request(path)
   @response = HTTParty.get("https://#{test_host}:#{https_port}#{path}")
 end
 
-def https_request(path)
-  @response = HTTParty.get("https://#{test_host}:#{https_port}#{path}")
-end
-
 def http_response
   @response
 end

@@ -36,6 +36,9 @@ Attributes
 * `node['apache_test']['root_dir']` - The root directory of the webserver.
 * `node['apache_test']['remote_host_ip']` - The remote host IP address for
   authorization.
+* `node['apache_test']['ssl_dir']` - The local directory containing the generated SSL key and certificate.
+* `node['apache_test']['ssl_cert_file']` - The SSL certificate file.
+* `node['apache_test']['ssl_cert_key_file']` - The private key.
 
 Recipes
 =======
@@ -56,6 +59,7 @@ Recipes
 * `mod_php5` - Adds a PHP script running under mod_php5 that prints environment variables for testing.
 * `mod_proxy_ajp` - Installs Tomcat with examples and configures proxying over AJP.
 * `mod_python` - Adds a Python script running under mod_python that prints environment variables for testing.
+* `mod_ssl` - Adds a self-signed SSL certificate and default website for testing.
 * `mod_status_remote` - Enables remote access to stats for testing.
 
 License and Authors
