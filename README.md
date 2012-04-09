@@ -44,7 +44,8 @@ Recipes
 * `mod_auth_basic` - Adds a web_app behind basic authentication for testing.
 * `mod_auth_digest` - Adds a web_app behind digest authenticaiton for testing.
 * `mod_auth_openid` - Adds a web_app behind openid authentication for testing.
-* `mod_authz_groupfile` - Adds a web_app behind groupfile-based authorizationfor testing.
+* `mod_authnz_ldap` - Adds a web_app behind ldap-based authorization for testing.
+* `mod_authz_groupfile` - Adds a web_app behind groupfile-based authorization for testing.
 * `mod_authz_listed_host` - Adds a web_app behind host-based authorization for testing.
 * `mod_authz_unlisted_host` - Adds a web_app behind host-based authorization for testing.
 * `mod_authz_user` - Adds a web_app behind username-based authorization for testing.

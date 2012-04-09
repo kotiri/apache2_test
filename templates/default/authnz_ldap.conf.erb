@@ -1,0 +1,7 @@
+<Location /secure>
+  AuthType basic
+  AuthBasicProvider "ldap"
+  AuthLDAPUrl "ldap://localhost:389/<%= @params[:base_dn] %>?uid?sub?objectClass=inetOrgPerson"
+  AuthName "private area"
+  Require valid-user
+</Location>

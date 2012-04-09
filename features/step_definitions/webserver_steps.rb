@@ -42,7 +42,7 @@ When 'I request the status page from a remote host' do
   http_request '/server-status/'
 end
 
-When /^the authenticated user is (not )?listed (?:in the file|as authorized)$/ do |not_listed|
+When /^the authenticated user is (not )?listed (?:in the directory )(?:in the file|as authorized)$/ do |not_listed|
   http_request '/secure/',
     :basic_auth => {:username => not_listed ? 'meatballs' : 'bork',
     :password => 'secret'}
