@@ -19,6 +19,10 @@
 
 include_recipe "apache2::default"
 
+package "subversion" do
+  action :install
+end
+
 include_recipe "apache2::mod_dav"
 include_recipe "apache2::mod_dav_svn"
 
@@ -31,8 +35,8 @@ end
 
 execute "create-repo" do
   user node['apache']['user']
-  command "svnadmin create #{node['apache_test']['svn_dir']}"
-  not_if "svnadmin verify #{node['apache_test']['svn_dir']}"
+  command "svnadmin create --config-dir #{Chef::Config[:file_cache_path]} #{node['apache_test']['svn_dir']}"
+  not_if "bash -c 'svnadmin verify #{node['apache_test']['svn_dir']}'"
 end
 
 apache2_web_app "svn" do

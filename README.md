@@ -50,6 +50,7 @@ Recipes
 * `mod_authz_unlisted_host` - Adds a web_app behind host-based authorization for testing.
 * `mod_authz_user` - Adds a web_app behind username-based authorization for testing.
 * `mod_cgi` - Adds a CGI script (bash) that prints environment variables for testing.
+* `mod_dav_svn` - Adds a web_app with an empty Subversion repository for testing.
 * `mod_expires` - Adds a web_app that sets caching expiry headers for testing.
 * `mod_perl` - Adds a Perl script running under mod_perl that prints environment variables for testing.
 * `mod_php5` - Adds a PHP script running under mod_php5 that prints environment variables for testing.
