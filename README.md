@@ -53,6 +53,7 @@ Recipes
 * `mod_expires` - Adds a web_app that sets caching expiry headers for testing.
 * `mod_perl` - Adds a Perl script running under mod_perl that prints environment variables for testing.
 * `mod_php5` - Adds a PHP script running under mod_php5 that prints environment variables for testing.
+* `mod_proxy_ajp` - Installs Tomcat with examples and configures proxying over AJP.
 * `mod_python` - Adds a Python script running under mod_python that prints environment variables for testing.
 * `mod_status_remote` - Enables remote access to stats for testing.
 

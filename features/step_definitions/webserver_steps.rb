@@ -6,7 +6,7 @@ Given /^an alias defined|a path configured to allow directory listing.*$/ do
   # /icons/ is defined by default
 end
 
-When /^a request is made to a (CGI|Perl|Python|PHP) script that generates a list of environment variables$/ do |script_type|
+When /^a request is made to a (CGI|Java|Perl|Python|PHP) (?:script|application) that generates a list of (?:environment variables|request parameters)$/ do |script_type|
   http_request case script_type
     when 'CGI' then '/cgi-bin/env'
     when 'Python' then '/env/python.py'
@@ -119,6 +119,13 @@ Then /^the expected environment variables will be present$/ do
   env = environment_variables(http_response.body)
   env['GATEWAY_INTERFACE'].must_include 'CGI/1.1'
   env['SERVER_SOFTWARE'].must_equal 'Apache'
+end
+
+Then 'the expected request parameters will be present' do
+  params = request_parameters(http_response.body)
+  params['Method'].must_equal 'GET'
+  params['Protocol'].must_equal 'HTTP/1.1'
+  params['Request URI'].must_equal '/examples/servlets/servlet/RequestInfoExample'
 end
 
 Then /^the expiry time returned will match that configured$/ do

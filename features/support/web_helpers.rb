@@ -84,3 +84,7 @@ end
 def max_age_seconds(http_headers)
   http_headers['cache-control'].scan(/^max-age=([0-9]+)$/).to_s.to_i
 end
+
+def request_parameters(response_body)
+  Hash[*Nokogiri::HTML(response_body).xpath("//td/text()").map{|h| h.to_s.strip.sub(/:$/, '')}]
+end
