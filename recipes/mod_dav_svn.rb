@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: apache2_test
-# Attributes:: default
+# Recipe:: mod_dav_svn
 #
 # Copyright 2012, Opscode, Inc.
 #
@@ -17,11 +17,27 @@
 # limitations under the License.
 #
 
-default['apache_test']['auth_username'] = 'bork'
-default['apache_test']['auth_password'] = 'secret'
-default['apache_test']['cache_expiry_seconds'] = 60
-default['apache_test']['app_dir'] = '/home/apache2/env'
-default['apache_test']['cgi_dir'] = '/usr/lib/cgi-bin'
-default['apache_test']['root_dir'] = '/var/www'
-default['apache_test']['remote_host_ip'] = '192.168'
-default['apache_test']['svn_dir'] = '/home/apache2/svn'
+include_recipe "apache2::default"
+
+include_recipe "apache2::mod_dav"
+include_recipe "apache2::mod_dav_svn"
+
+directory node['apache_test']['svn_dir'] do
+  owner node['apache']['user']
+  group node['apache']['group']
+  recursive true
+  action :create
+end
+
+execute "create-repo" do
+  user node['apache']['user']
+  command "svnadmin create #{node['apache_test']['svn_dir']}"
+  not_if "svnadmin verify #{node['apache_test']['svn_dir']}"
+end
+
+apache2_web_app "svn" do
+  template "svn_repo.conf.erb"
+  params({
+    :repo_dir => node['apache_test']['svn_dir']
+  })
+end

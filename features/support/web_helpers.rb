@@ -46,6 +46,7 @@ def http_request(path, options={})
   else
     @response = HTTParty.get("http://#{test_host}:#{http_port}#{path}", options)
   end
+  @response
 end
 
 def http_request_digest_curl(path, options)
