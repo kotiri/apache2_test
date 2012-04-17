@@ -6,11 +6,11 @@ def test_host
 end
 
 def http_port
-  ENV['TEST_HTTP_PORT'] || 8080
+  ENV['TEST_HTTP_PORT'] || 80
 end
 
 def https_port
-  ENV['TEST_HTTPS_PORT'] || 4343
+  ENV['TEST_HTTPS_PORT'] || 443
 end
 
 def cache_time_seconds(http_headers)
