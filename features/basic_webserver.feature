@@ -13,4 +13,4 @@ I want to respond to website requests
   Scenario: Missing page
     Given a new webserver
      When I request a URL known not to exist
-     Then page not found should be returned with a 404 response code
+     Then page not found should be returned

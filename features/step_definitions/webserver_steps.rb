@@ -87,7 +87,7 @@ Then 'I will be able to sort the files by size' do
   dir_listing_entries[1].must_equal 'small/'
 end
 
-Then 'page not found should be returned with a 404 response code' do
+Then 'page not found should be returned' do
   http_response.body.must_include 'Not Found'
   http_response.code.must_equal 404
 end
