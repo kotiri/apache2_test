@@ -14,7 +14,7 @@ When /^a request is made to a (CGI|Java|Perl|Python|PHP) (?:script|application) 
   end
 end
 
-When /^I request a path which has a cache directive applied$/ do
+When 'I request a path which has a cache directive applied' do
   http_request '/cachetest/'
 end
 
@@ -108,14 +108,14 @@ Then 'the default page should be returned' do
   assert default_page_present?(http_response.body)
 end
 
-Then 'the directory listing should be returned with a 200 response code' do
+Then 'the directory listing should be returned successfully' do
   http_response.body.must_include 'Index of /icons'
   http_response.body.must_include 'Parent Directory'
   dir_listing_entries[1..4].must_equal ['README', 'README.html', 'a.gif', 'a.png']
   http_response.code.must_equal 200
 end
 
-Then /^the expected environment variables will be present$/ do
+Then 'the expected environment variables will be present' do
   env = environment_variables(http_response.body)
   env['GATEWAY_INTERFACE'].must_include 'CGI/1.1'
   env['SERVER_SOFTWARE'].must_equal 'Apache'
@@ -128,7 +128,7 @@ Then 'the expected request parameters will be present' do
   params['Request URI'].must_equal '/examples/servlets/servlet/RequestInfoExample'
 end
 
-Then /^the expiry time returned will match that configured$/ do
+Then 'the expiry time returned will match that configured' do
   http_response.code.must_equal 200
   cache_time_seconds(http_response.headers).must_equal 60
   max_age_seconds(http_response.headers).must_equal 60
