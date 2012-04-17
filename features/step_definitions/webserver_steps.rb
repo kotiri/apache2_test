@@ -99,7 +99,7 @@ Then 'simple statistics will be shown' do
   end
 end
 
-Then 'the aliased resource should be returned with a 200 response code' do
+Then 'the aliased resource should be returned successfully' do
   http_response.body.must_include 'Index of /icons'
   http_response.code.must_equal 200
 end

@@ -9,4 +9,4 @@ I want to be able to alias paths
     Given a new webserver with aliasing enabled
       And an alias defined
      When I request the alias path
-     Then the aliased resource should be returned with a 200 response code
+     Then the aliased resource should be returned successfully
