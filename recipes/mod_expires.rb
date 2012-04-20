@@ -24,9 +24,7 @@ directory "#{node['apache_test']['root_dir']}/cachetest" do
   action :create
 end
 
-apache2_web_app "cachetest" do
+web_app "cachetest" do
   template "cache_test.conf.erb"
-  params({
-    :cache_expiry_seconds => node['apache_test']['cache_expiry_seconds']
-  })
+  cache_expiry_seconds node['apache_test']['cache_expiry_seconds']
 end

@@ -24,6 +24,6 @@ directory "#{node['apache_test']['root_dir']}/secure" do
   action :create
 end
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "auth_openid.conf.erb"
 end

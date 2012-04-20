@@ -29,9 +29,7 @@ execute "add-credentials" do
   action :run
 end
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "auth_basic.conf.erb"
-  params({
-    :auth_user_file => "#{node['apache_test']['root_dir']}/secure/.htpasswd"
-  })
+  auth_user_file "#{node['apache_test']['root_dir']}/secure/.htpasswd"
 end

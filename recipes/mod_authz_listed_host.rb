@@ -24,9 +24,7 @@ directory "#{node['apache_test']['root_dir']}/secure" do
   action :create
 end
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "authz_host.conf.erb"
-  params({
-    :remote_host_ip => node['apache_test']['remote_host_ip']
-  })
+  remote_host_ip node['apache_test']['remote_host_ip']
 end

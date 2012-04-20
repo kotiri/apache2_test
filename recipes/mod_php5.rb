@@ -44,9 +44,7 @@ foreach($_SERVER as $key_name => $key_value) {
   action :create
 end
 
-apache2_web_app "php_env" do
+web_app "php_env" do
   template "php_env.conf.erb"
-  params({
-    :app_dir => node['apache_test']['app_dir']
-  })
+  app_dir node['apache_test']['app_dir']
 end

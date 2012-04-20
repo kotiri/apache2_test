@@ -53,9 +53,7 @@ for k in sorted(os.environ):
   action :create
 end
 
-apache2_web_app "python_env" do
+web_app "python_env" do
   template "python_env.conf.erb"
-  params({
-    :app_dir => node['apache_test']['app_dir']
-  })
+  app_dir node['apache_test']['app_dir']
 end

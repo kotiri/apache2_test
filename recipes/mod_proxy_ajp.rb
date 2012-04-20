@@ -33,10 +33,8 @@ else
   end
 end
 
-apache2_web_app "java_env" do
+web_app "java_env" do
   template "java_env.conf.erb"
-  params({
-    :ajp_host => 'localhost',
-    :ajp_port => 8009
-  })
+  ajp_host 'localhost'
+  ajp_port 8009
 end

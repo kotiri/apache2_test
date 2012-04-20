@@ -34,10 +34,8 @@ end
 
 include_recipe "apache2::mod_authz_user"
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "authz_user.conf.erb"
-  params({
-    :secure_dir => secure_dir,
-    :username => node['apache_test']['auth_username']
-  })
+  secure_dir secure_dir
+  username node['apache_test']['auth_username']
 end

@@ -39,9 +39,7 @@ execute "create-repo" do
   not_if "bash -c 'svnadmin verify #{node['apache_test']['svn_dir']}'"
 end
 
-apache2_web_app "svn" do
+web_app "svn" do
   template "svn_repo.conf.erb"
-  params({
-    :repo_dir => node['apache_test']['svn_dir']
-  })
+  repo_dir node['apache_test']['svn_dir']
 end

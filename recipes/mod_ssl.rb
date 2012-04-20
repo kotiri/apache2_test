@@ -45,12 +45,10 @@ EOF}
   not_if "test -f #{node['apache_test']['ssl_cert_file']}"
 end
 
-apache2_web_app "ssl" do
+web_app "ssl" do
   template "ssl.conf.erb"
-  params({
-    :server_name => node['domain'],
-    :document_root => node['apache_test']['root_dir'],
-    :ssl_cert_file => node['apache_test']['ssl_cert_file'],
-    :ssl_cert_key_file => node['apache_test']['ssl_cert_key_file']
-  })
+  server_name node['domain']
+  document_root node['apache_test']['root_dir']
+  ssl_cert_file node['apache_test']['ssl_cert_file']
+  ssl_cert_key_file node['apache_test']['ssl_cert_key_file']
 end

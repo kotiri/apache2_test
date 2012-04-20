@@ -63,9 +63,7 @@ foreach my $key (sort(keys(%ENV))) {
   action :create
 end
 
-apache2_web_app "perl_env" do
+web_app "perl_env" do
   template "perl_env.conf.erb"
-  params({
-    :app_dir => node['apache_test']['app_dir']
-  })
+  app_dir node['apache_test']['app_dir']
 end

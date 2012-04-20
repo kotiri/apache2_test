@@ -54,9 +54,7 @@ directory "#{node['apache_test']['root_dir']}/secure" do
   action :create
 end
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "authnz_ldap.conf.erb"
-  params({
-    :base_dn => node['openldap']['basedn']
-  })
+  base_dn node['openldap']['basedn']
 end

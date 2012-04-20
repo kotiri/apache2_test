@@ -39,10 +39,8 @@ file "#{secure_dir}/.htgroups" do
 end
 
 include_recipe "apache2::mod_authz_groupfile"
-apache2_web_app "secure" do
+web_app "secure" do
   template "authz_groupfile.conf.erb"
-  params({
-    :secure_dir => secure_dir,
-    :group_name => group_name
-  })
+  secure_dir secure_dir
+  group_name group_name
 end

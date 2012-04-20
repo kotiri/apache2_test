@@ -31,9 +31,7 @@ bash "add_credentials" do
   }
 end
 
-apache2_web_app "secure" do
+web_app "secure" do
   template "auth_digest.conf.erb"
-  params({
-    :auth_user_file => "#{node['apache_test']['root_dir']}/secure/.htdigest"
-  })
+  auth_user_file "#{node['apache_test']['root_dir']}/secure/.htdigest"
 end
